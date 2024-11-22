@@ -1,26 +1,27 @@
-package br.edu.ifto.dposite
+package br.edu.ifto.dposite.ui.theme
 
-import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
-import br.edu.ifto.dposite.ui.theme.Cadastro
-import br.edu.ifto.dposite.ui.theme.DpositeTheme
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.geometry.Offset
 
+
+
+
 @Composable
-fun FigmaGradientScreen() {
+fun Cadastro() {
+
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -36,37 +37,28 @@ fun FigmaGradientScreen() {
                 )
             )
     ) {
-        // Coloque os componentes da sua tela aqui
+        Text(
+            text = "Dposite",
+            fontSize = 60.sp,
+            textAlign = TextAlign.Center,
+            //ontFamily = fonteBorel,
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(30.dp)
+        )
+
     }
+
 }
-
-
-class MainActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContent {
-            DpositeTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Cadastro()
-                }
-            }
-        }
-    }
-}
-
+@Preview
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
+fun CadastroDefault(){
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
     DpositeTheme {
-        Greeting("Android")
-    }
+        Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+            Cadastro()
+        }
+}
+
+
 }

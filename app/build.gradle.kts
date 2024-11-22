@@ -5,12 +5,12 @@ plugins {
 
 android {
     namespace = "br.edu.ifto.dposite"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "br.edu.ifto.dposite"
         minSdk = 24
-        targetSdk = 34
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
