@@ -12,6 +12,13 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.material3.TextField
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.geometry.Offset
@@ -37,15 +44,38 @@ fun Cadastro() {
                 )
             )
     ) {
-        Text(
-            text = "Dposite",
-            fontSize = 60.sp,
-            textAlign = TextAlign.Center,
-            //ontFamily = fonteBorel,
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(30.dp)
-        )
+        Column(
+            modifier = Modifier.padding(30.dp)
+
+        ) {
+
+            Text(
+                text = "Dposite",
+                fontSize = 60.sp,
+                textAlign = TextAlign.Center,
+                //ontFamily = fonteBorel,
+                color = Color.White,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(bottom = 45.dp)
+            )
+
+            var email by remember { mutableStateOf("") }
+
+            TextField(
+                placeholder = {
+                    Text("Digite Seu E-mail")
+                },
+                modifier = Modifier
+                    .fillMaxWidth(),
+
+
+                value = email,
+                onValueChange = {
+                    email = it
+                }
+            )
+        }
 
     }
 
