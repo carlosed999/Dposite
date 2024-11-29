@@ -1,4 +1,4 @@
-package br.edu.ifto.dposite.ui.theme
+package br.edu.ifto.dposite
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -22,7 +22,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.LockOpen
-import androidx.compose.material.icons.filled.People
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Phone
 import androidx.compose.material3.Button
@@ -44,8 +43,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.input.TextFieldValue
-import br.edu.ifto.dposite.R
+import br.edu.ifto.dposite.ui.theme.DpositeTheme
 
 val borelFontFamily = FontFamily(
     Font(R.font.borel) // Aponte para o arquivo TTF

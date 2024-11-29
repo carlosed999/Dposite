@@ -5,13 +5,11 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import br.edu.ifto.dposite.ui.theme.Cadastro
 import br.edu.ifto.dposite.ui.theme.DpositeTheme
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -48,7 +46,8 @@ class MainActivity : ComponentActivity() {
         setContent {
             DpositeTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Cadastro()
+
+                    Login()
 
                 }
             }
