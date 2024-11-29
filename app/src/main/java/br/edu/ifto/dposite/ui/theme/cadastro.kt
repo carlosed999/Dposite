@@ -11,15 +11,24 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Email
+import androidx.compose.material.icons.filled.Lock
+import androidx.compose.material.icons.filled.LockOpen
+import androidx.compose.material.icons.filled.People
+import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.Phone
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.getValue
@@ -30,19 +39,23 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.TextFieldValue
 import br.edu.ifto.dposite.R
+
+val borelFontFamily = FontFamily(
+    Font(R.font.borel) // Aponte para o arquivo TTF
+)
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Cadastro() {
 
-    val borelFontFamily = FontFamily(
-        Font(R.font.borel) // Aponte para o arquivo TTF
-    )
 
     val lilyScriptOneFontFamily = FontFamily(
         Font(R.font.lilyscriptone) // Referência ao arquivo TTF
@@ -83,48 +96,84 @@ fun Cadastro() {
 
             var email by remember { mutableStateOf("") }
 
-            TextField(
-                placeholder = {
-                    Text("Digite Seu E-mail")
-                },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(bottom = 40.dp),
 
-                value = email,
-                onValueChange = {
-                    email = it
-                },
+            Box(
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                TextField(
+                    value = email,
+                    onValueChange = { email = it },
+                    placeholder = {
+                        Text(
+                            text = "Digite Seu E-mail",
+                            style = TextStyle(
+                                fontFamily = borelFontFamily, // Use a fonte Boreal aqui
+                                fontSize = 14.sp,
+                                color = Color.White
+                            ),
+                            modifier = Modifier.padding(top=10.dp) // Alinha o placeholder ao centro
+                        )
+                    },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(bottom = 40.dp)
+                        .border(width = 2.dp,color=Color.White, shape =  RoundedCornerShape(20.dp)),
 
-                //icone iniciio
-                trailingIcon = ,
-
-                shape = RoundedCornerShape(16.dp), // Bordas arredondadas
-                colors = TextFieldDefaults.textFieldColors(
-
-                    containerColor = Color(0xFFEEEEEE), // Fundo cinza claro
-                    focusedIndicatorColor = Color.Transparent, // Remove linha inferior ao focar
-                    unfocusedIndicatorColor = Color.Transparent // Remove linha inferior ao desfocar
-
-            )
-
-            )
+                    leadingIcon = {
+                        Icon(
+                            imageVector = Icons.Filled.Email,
+                            contentDescription = "E-mail Icon",
+                            tint = Color.White
+                        )
+                    },
+                    shape = RoundedCornerShape(16.dp), // Bordas arredondadas
+                    colors = TextFieldDefaults.textFieldColors(
+                        containerColor = Color(0x11000000), // Fundo cinza claro
+                        focusedIndicatorColor = Color.Transparent, // Remove linha inferior ao focar
+                        unfocusedIndicatorColor = Color.Transparent // Remove linha inferior ao desfocar
+                    )
+                )
+            }
 
             var senha by remember { mutableStateOf("") }
 
             TextField(
                 placeholder = {
-                    Text("Crie Sua Senha")
+                    Text(
+                        text = "Crie Sua Senha",
+                        style = TextStyle(
+                            fontFamily = borelFontFamily, // Use a fonte Boreal aqui
+                            fontSize = 14.sp,
+                            color = Color.White
+                        ),
+                        modifier = Modifier.padding(top=10.dp) // Alinha o placeholder ao centro
+                    )
                 },
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(bottom = 20.dp),
-
+                    .padding(bottom = 40.dp)
+                    .border(width = 2.dp,color=Color.White, shape =  RoundedCornerShape(20.dp)),
 
                 value = senha,
                 onValueChange = {
                     senha = it
-                }
+                },
+
+                leadingIcon = {
+                    Icon(
+                        imageVector = Icons.Filled.Lock,
+                        contentDescription = "Cadeado Icon",
+                        tint = Color.White
+                    )
+                },
+                shape = RoundedCornerShape(16.dp), // Bordas arredondadas
+                colors = TextFieldDefaults.textFieldColors(
+
+                    containerColor = Color(0x11000000), // Fundo cinza claro
+                    focusedIndicatorColor = Color.Transparent, // Remove linha inferior ao focar
+                    unfocusedIndicatorColor = Color.Transparent // Remove linha inferior ao desfocar
+                )
+
 
             )
 
@@ -132,17 +181,40 @@ fun Cadastro() {
 
             TextField(
                 placeholder = {
-                    Text("Confirme Sua Senha")
+                    Text(
+                        text = "Confirma Sua Senha",
+                        style = TextStyle(
+                            fontFamily = borelFontFamily, // Use a fonte Boreal aqui
+                            fontSize = 14.sp,
+                            color = Color.White
+                        ),
+                        modifier = Modifier.padding(top=10.dp) // Alinha o placeholder ao centro
+                    )
                 },
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(bottom = 20.dp),
+                    .padding(bottom = 40.dp)
+                    .border(width = 2.dp,color=Color.White, shape =  RoundedCornerShape(20.dp)),
 
 
                 value = confirmaSenha,
                 onValueChange = {
                     confirmaSenha = it
-                }
+                },
+                leadingIcon = {
+                    Icon(
+                        imageVector = Icons.Filled.LockOpen,
+                        contentDescription = "Cadeado Icon",
+                        tint = Color.White
+                    )
+                },
+                shape = RoundedCornerShape(16.dp), // Bordas arredondadas
+                colors = TextFieldDefaults.textFieldColors(
+
+                    containerColor = Color(0x11000000), // Fundo cinza claro
+                    focusedIndicatorColor = Color.Transparent, // Remove linha inferior ao focar
+                    unfocusedIndicatorColor = Color.Transparent // Remove linha inferior ao desfocar
+                )
 
             )
 
@@ -150,55 +222,68 @@ fun Cadastro() {
 
             TextField(
                 placeholder = {
-                    Text("Digite Seu Nome")
+                    Text(
+                        text = "Digite Seu Nome",
+                        style = TextStyle(
+                            fontFamily = borelFontFamily, // Use a fonte Boreal aqui
+                            fontSize = 14.sp,
+                            color = Color.White
+                        ),
+                        modifier = Modifier.padding(top=10.dp) // Alinha o placeholder ao centro
+                    )
                 },
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(bottom = 20.dp),
-
+                    .padding(bottom = 40.dp)
+                    .border(width = 2.dp,color=Color.White, shape =  RoundedCornerShape(20.dp)),
 
                 value = name,
                 onValueChange = {
                     name = it
-                }
+                },
+                leadingIcon = {
+                    Icon(
+                        imageVector = Icons.Filled.Person,
+                        contentDescription = "Pessoa Icon",
+                        tint = Color.White
+                    )
+                },
+
+                shape = RoundedCornerShape(16.dp), // Bordas arredondadas
+                colors = TextFieldDefaults.textFieldColors(
+
+                    containerColor = Color(0x11000000), // Fundo cinza claro
+                    focusedIndicatorColor = Color.Transparent, // Remove linha inferior ao focar
+                    unfocusedIndicatorColor = Color.Transparent // Remove linha inferior ao desfocar
+                )
+
 
             )
 
             var sobrenome by remember { mutableStateOf("") }
 
-            TextField(
-                placeholder = {
-                    Text("Digite Seu Sobrenome")
-                },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(bottom = 20.dp),
-
-
-                value = sobrenome,
-                onValueChange = {
+            Campo(
+                texto = "Digite Seu Sobrenome",
+                valor = sobrenome,
+                aoMudar = {
                     sobrenome= it
-                }
-
+                },
+                icone = Icons.Filled.Person
             )
+
 
             var telefone by remember { mutableStateOf("") }
 
-            TextField(
-                placeholder = {
-                    Text("Digite Seu Telefone")
-                },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(bottom = 20.dp),
-
-
-                value = telefone,
-                onValueChange = {
+            Campo(
+                texto = "Digite Seu Telefone",
+                valor = telefone,
+                aoMudar = {
                     telefone= it
-                }
-
+                },
+                icone = Icons.Filled.Phone
             )
+
+
 
             Spacer(modifier=Modifier.weight(1f))
 
@@ -215,12 +300,16 @@ fun Cadastro() {
                     .align(Alignment.CenterHorizontally), // Centraliza o botão horizontalmente
                 shape = RoundedCornerShape(16.dp) // Bordas arredondadas
             ) {
-                Text(
-                    text = "Cadastrar",
-                    color = Color.White, // Define o texto como branco
-                    fontSize = 18.sp, // Aumenta o tamanho do texto
-                    fontWeight = FontWeight.Bold // Adiciona negrito ao texto
-                )
+
+                    Text(
+                        text = "Cadastrar",
+                        fontFamily = borelFontFamily, // Fonte Boreal
+                        color = Color.White, // Cor do texto
+                        fontSize = 18.sp, // Tamanho do texto
+                        fontWeight = FontWeight.Bold, // Negrito
+                        modifier = Modifier.padding(top=5.dp) // Centraliza o texto
+                    )
+
             }
 
 
@@ -233,17 +322,61 @@ fun Cadastro() {
 
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun Campo(
+    texto: String,
+    valor: String,
+    aoMudar: (String) -> Unit,
+    icone:ImageVector
+){
+    TextField(
+        placeholder = {
+            Text(texto,
+                style = TextStyle(
+                    fontFamily = borelFontFamily, // Use a fonte Boreal aqui
+                    fontSize = 14.sp,
+                    color = Color.White
+                ),
+                modifier = Modifier.padding(top=10.dp) // Alinha o placeholder ao centro)
+            )
+                      },
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(bottom = 40.dp)
+            .border(width = 2.dp,color=Color.White, shape =  RoundedCornerShape(20.dp)),
+        value = valor,
+        onValueChange = aoMudar,
+        leadingIcon = {
+            Icon(
+                imageVector = icone,
+                contentDescription = "Pessoa Icon",
+                tint = Color.White
+            )
+        },
+
+        shape = RoundedCornerShape(16.dp), // Bordas arredondadas
+        colors = TextFieldDefaults.textFieldColors(
+
+            containerColor = Color(0x11000000), // Fundo cinza claro
+            focusedIndicatorColor = Color.Transparent, // Remove linha inferior ao focar
+            unfocusedIndicatorColor = Color.Transparent // Remove linha inferior ao desfocar
+        )
+
+    )
+}
+
 
 @Preview
 @Composable
 fun CadastroDefault(){
 
     DpositeTheme {
-        Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+        Scaffold(modifier = Modifier.fillMaxSize()) { _ ->
             Cadastro()
 
         }
-}
+    }
 
 
 }
