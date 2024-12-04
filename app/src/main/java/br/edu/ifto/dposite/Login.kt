@@ -98,7 +98,7 @@ fun Login() {
                 color = Color.White,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(bottom = 45.dp)
+                    .padding(bottom = 10.dp)
             )
 
             var email by remember { mutableStateOf("") }

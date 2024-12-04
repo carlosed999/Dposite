@@ -47,7 +47,7 @@ class MainActivity : ComponentActivity() {
             DpositeTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
 
-                    Login()
+                    carregamentos()
 
                 }
             }
