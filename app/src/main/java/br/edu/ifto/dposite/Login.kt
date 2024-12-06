@@ -45,11 +45,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun Login() {
+fun Login(navController: NavController) {
     val lilyScriptOneFontFamily = FontFamily(
         Font(R.font.lilyscriptone) // Referência ao arquivo TTF
     )
@@ -189,7 +190,7 @@ fun Login() {
             )
 
             Button(
-                onClick = { /* Ação ao clicar no botão */ },
+                onClick = { navController.navigate("Carregamentos") },
                 colors = ButtonDefaults.buttonColors(
 
                     containerColor = Color.Gray
@@ -210,6 +211,7 @@ fun Login() {
                     fontSize = 22.sp, // Tamanho do texto
                     fontWeight = FontWeight.Bold, // Negrito
                     modifier = Modifier.padding(top = 5.dp) // Centraliza o texto
+
                 )
 
             }
@@ -239,7 +241,7 @@ fun Login() {
                     modifier = Modifier.fillMaxWidth()
                 ) {
                     // Ícone Google
-                    IconButton(onClick = { /* Ação do Google */ }) {
+                    IconButton(onClick = { navController.navigate("Carregamentos") }) {
                         Icon(
                             painter = painterResource(id = R.drawable.google),
                             contentDescription = "Google Login",
@@ -249,7 +251,7 @@ fun Login() {
                     }
 
                     // Ícone Facebook
-                    IconButton(onClick = { /* Ação do Facebook */ }) {
+                    IconButton(onClick = { navController.navigate("Carregamentos") }) {
                         Icon(
                             painter = painterResource(id = R.drawable.facebook),
                             contentDescription = "Facebook Login",
@@ -259,7 +261,7 @@ fun Login() {
                     }
 
                     // Ícone Instagram
-                    IconButton(onClick = { /* Ação do Instagram */ }) {
+                    IconButton(onClick = { navController.navigate("Carregamentos") }) {
                         Icon(
                             painter = painterResource(id = R.drawable.instagram),
                             contentDescription = "Instagram Login",

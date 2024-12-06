@@ -43,6 +43,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.navigation.NavController
 import br.edu.ifto.dposite.ui.theme.DpositeTheme
 
 val borelFontFamily = FontFamily(
@@ -52,7 +53,7 @@ val borelFontFamily = FontFamily(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun Cadastro() {
+fun Cadastro(navController: NavController) {
 
 
     val lilyScriptOneFontFamily = FontFamily(
@@ -286,7 +287,7 @@ fun Cadastro() {
             Spacer(modifier=Modifier.weight(1f))
 
             Button(
-                onClick = { /* Ação ao clicar no botão */ },
+                onClick = { navController.navigate("Carregamentos")},
                 colors = ButtonDefaults.buttonColors(
 
                     containerColor = Color.Red
@@ -371,7 +372,6 @@ fun CadastroDefault(){
 
     DpositeTheme {
         Scaffold(modifier = Modifier.fillMaxSize()) { _ ->
-            Cadastro()
 
         }
     }

@@ -16,6 +16,9 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.geometry.Offset
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 
 @Composable
 fun FigmaGradientScreen() {
@@ -46,8 +49,22 @@ class MainActivity : ComponentActivity() {
         setContent {
             DpositeTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+                    val navController = rememberNavController()
 
-                    carregamentos()
+                    NavHost(navController = navController, startDestination = "Inicio") {
+                        composable("Inicio"){ Inicio(navController = navController)}
+                        composable("Login"){ Login(navController = navController) }
+                        composable("Cadastro"){ Cadastro(navController = navController) }
+                        composable("Carregamentos"){ Carregamentos(navController = navController) }
+                        composable("Perfil"){ Perfil(navController = navController) }
+
+                    }
+
+
+                    //Carregamentos()
+                    //Armazenamento()
+                    //Perfil()
+                   // Inicio()
 
                 }
             }
