@@ -147,8 +147,7 @@ fun Carregamentos(navController: NavController) {
                         modifier = Modifier
                             .size(160.dp, 150.dp)
                             .clickable {
-                                // Ação ao clicar no Box
-                                // Coloque a lógica ou o código que deseja executar aqui
+                                navController.navigate("Armazenamento")
                                 println("Box clicado!")
                             }
                             .background(

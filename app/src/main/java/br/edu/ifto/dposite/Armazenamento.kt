@@ -1,7 +1,9 @@
 package br.edu.ifto.dposite
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -12,11 +14,16 @@ import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
@@ -30,7 +37,7 @@ import androidx.navigation.NavController
 import androidx.compose.ui.Alignment.Companion as Alignment1
 
 @Composable
-fun Armazenamento(navController: NavController){
+fun Armazenamento(){
 
     val lilyScriptOneFontFamily = FontFamily(
         Font(R.font.lilyscriptone) // Referência ao arquivo TTF
@@ -65,22 +72,38 @@ fun Armazenamento(navController: NavController){
                 modifier = Modifier
                     .fillMaxWidth())
         }
+
+        
         Row(modifier = Modifier
             .fillMaxWidth()
             .padding(top = 80.dp), horizontalArrangement = Arrangement.Center) {
             Text(
                 text =
-                "Vídeos\n Armazenados",
+                "       Vídeos\n Armazenados",
                 fontSize = 30.sp,
                 color = Color.White,
-                fontFamily = borelFontFamily)
-            Box (){
-                Button(onClick = { /*TODO*/ }, modifier = Modifier
-                    .size(30.dp),
-                    shape = CircleShape,
-                ) {
-                }
+                fontFamily = borelFontFamily
+            )
+
+            Column(
+                modifier = Modifier
+                    .clip(CircleShape)
+                    .background(Color.Green)
+                    .padding(5.dp)
+                    .clickable {
+
+                    }
+
+            ) {
+                Icon(
+                    imageVector = Icons.Default.Add, // Ícone de +
+                    contentDescription = "Adicionar",
+                    tint = Color.White, // Ícone branco
+                    modifier = Modifier.size(30.dp)
+                )
+
             }
+            
         }
         Column (modifier = Modifier
             .padding(top = 50.dp)

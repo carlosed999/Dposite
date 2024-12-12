@@ -49,20 +49,20 @@ class MainActivity : ComponentActivity() {
         setContent {
             DpositeTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    val navController = rememberNavController()
+                   // val navController = rememberNavController()
 
-                    NavHost(navController = navController, startDestination = "Inicio") {
-                        composable("Inicio"){ Inicio(navController = navController)}
-                        composable("Login"){ Login(navController = navController) }
-                        composable("Cadastro"){ Cadastro(navController = navController) }
-                        composable("Carregamentos"){ Carregamentos(navController = navController) }
-                        composable("Perfil"){ Perfil(navController = navController) }
+                    //NavHost(navController = navController, startDestination = "Inicio") {
+                       //composable("Inicio"){ Inicio(navController = navController)}
+                      //  composable("Login"){ Login(navController = navController) }
+                       // composable("Cadastro"){ Cadastro(navController = navController) }
+                       // composable("Carregamentos"){ Carregamentos(navController = navController) }
+                       // composable("Perfil"){ Perfil(navController = navController) }
 
-                    }
+                   // }
 
 
                     //Carregamentos()
-                    //Armazenamento()
+                    Armazenamento()
                     //Perfil()
                    // Inicio()
 
