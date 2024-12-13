@@ -35,6 +35,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import androidx.navigation.compose.composable
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -147,7 +148,7 @@ fun Carregamentos(navController: NavController) {
                         modifier = Modifier
                             .size(160.dp, 150.dp)
                             .clickable {
-                                navController.navigate("Armazenamento")
+                                navController.navigate("Albuns")
                                 println("Box clicado!")
                             }
                             .background(
@@ -198,9 +199,7 @@ fun Carregamentos(navController: NavController) {
                         modifier = Modifier
                             .size(160.dp, 150.dp)
                             .clickable {
-                                // Ação ao clicar no Box
-                                // Coloque a lógica ou o código que deseja executar aqui
-                                println("Box clicado!")
+                                 navController.navigate("ArmazenamentoFotos")
                             }
                             .background(
                                 color = Color(0xFF103B6D),
@@ -244,9 +243,9 @@ fun Carregamentos(navController: NavController) {
                         modifier = Modifier
                             .size(160.dp, 150.dp)
                             .clickable {
-                                // Ação ao clicar no Box
-                                // Coloque a lógica ou o código que deseja executar aqui
-                                println("Box clicado!")
+
+                                navController.navigate("Armazenamentovideo")
+
                             }
                             .background(
                                 brush = Brush.linearGradient(
@@ -286,9 +285,7 @@ fun Carregamentos(navController: NavController) {
                         modifier = Modifier
                             .size(160.dp, 150.dp)
                             .clickable {
-                                // Ação ao clicar no Box
-                                // Coloque a lógica ou o código que deseja executar aqui
-                                println("Box clicado!")
+                                navController.navigate("Favoritos")
                             }
                             .background(
                                 color = Color(0x36FBFBFB),

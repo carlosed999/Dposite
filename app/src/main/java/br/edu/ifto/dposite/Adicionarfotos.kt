@@ -35,10 +35,11 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import br.edu.ifto.dposite.R
 
 @Composable
-fun Adicionarfotos(){
+fun Adicionarfotos(navController: NavController){
 
     val lilyScriptOneFontFamily = FontFamily(
         Font(R.font.lilyscriptone) // Referência ao arquivo TTF
@@ -100,7 +101,7 @@ Box(
 
             ) {
                 IconButton(
-                    onClick = { },
+                    onClick = { navController.navigate("Carregamentos")},
                     modifier = Modifier
                         .size(48.dp).padding(top = 20.dp)
                         .background(
@@ -144,7 +145,9 @@ Box(
                    Text(
                        text = "Adicionar Imagens",
                        fontFamily = borelFontFamily,
-                       fontSize = 25.sp
+                       fontSize = 25.sp,
+                       color = Color.White
+
                    )
                    Image(
                        modifier = Modifier.size(200.dp),

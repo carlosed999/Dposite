@@ -16,13 +16,20 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -30,6 +37,7 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.style.TextAlign
@@ -39,7 +47,7 @@ import androidx.navigation.NavController
 import br.edu.ifto.dposite.R
 
 @Composable
-fun Adicionarvideos(navController: NavController){
+fun Criaralbum(navController: NavController){
 
     val lilyScriptOneFontFamily = FontFamily(
         Font(R.font.lilyscriptone) // Referência ao arquivo TTF
@@ -87,7 +95,8 @@ Box(
                 fontFamily = lilyScriptOneFontFamily,
                 color = Color.White,
                 modifier = Modifier
-                    .fillMaxWidth().padding(end = 50.dp),
+                    .fillMaxWidth()
+                    .padding(end = 50.dp),
                 textAlign = TextAlign.Center
 
             )
@@ -96,14 +105,16 @@ Box(
             Column(
                 modifier = Modifier
                     .align(Alignment.TopEnd)
-                    .fillMaxHeight().padding(start = 20.dp),
+                    .fillMaxHeight()
+                    .padding(start = 20.dp),
                 verticalArrangement = Arrangement.Center
 
             ) {
                 IconButton(
-                    onClick = { navController.navigate("Carregamentos")},
+                    onClick = {navController.navigate("Carregamentos") },
                     modifier = Modifier
-                        .size(48.dp).padding(top = 20.dp)
+                        .size(48.dp)
+                        .padding(top = 20.dp)
                         .background(
                             color = Color(0xFF688AA6), // Fundo com a cor especificada
                             shape = RoundedCornerShape(12.dp) // Bordas arredondadas
@@ -120,13 +131,61 @@ Box(
 
 
         //Nome Adicionar
-        Column (modifier = Modifier.fillMaxWidth().padding(top = 20.dp), horizontalAlignment = Alignment.CenterHorizontally){
+        Column (modifier = Modifier
+            .fillMaxWidth()
+            .padding(top = 20.dp), horizontalAlignment = Alignment.CenterHorizontally){
             Text(text =
-            "Adicionar Vídeos",
+            "Criar Album",
                 fontSize = 25.sp,
                 color = Color.White,
                 fontFamily = borelFontFamily)
         }
+        //Nome do Album
+        Column (modifier = Modifier
+            .fillMaxWidth()
+            .padding(top = 20.dp), horizontalAlignment = Alignment.CenterHorizontally){
+            Text(text =
+            "Nome do Album",
+                fontSize = 25.sp,
+                color = Color.White,
+                fontFamily = borelFontFamily)
+        }
+        //Campo para criar nome do Album
+        var nome by remember { mutableStateOf("") }
+
+        TextField(
+            placeholder = {
+                Text(
+                    text = "",
+                    style = TextStyle(
+                       fontFamily = borelFontFamily, // Use a fonte Boreal aqui
+                        fontSize = 14.sp
+                    ),
+                )
+            },
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(60.dp),
+            colors = TextFieldDefaults.colors(
+                focusedContainerColor = Color.Transparent,
+                unfocusedContainerColor  = Color.Transparent,
+                focusedIndicatorColor = Color.White,
+                unfocusedIndicatorColor = Color.White
+            ),
+            textStyle = TextStyle(fontFamily  = borelFontFamily,
+                fontSize = 14.sp,
+                color = Color.White),
+            value = nome,
+            onValueChange = {
+                nome = it
+            }
+        )
+
+
+
+
+
+
 
         //Caixa de Adiconar
         Column (modifier = Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally){
@@ -143,10 +202,10 @@ Box(
                    , horizontalAlignment = Alignment.CenterHorizontally
                    ) {
                    Text(
-                       text = "Adicionar Vídeos",
+                       text = "Adicionar imagens",
                        fontFamily = borelFontFamily,
                        fontSize = 25.sp,
-                       color=Color.White
+                       color = Color.White
                    )
                    Image(
                        modifier = Modifier.size(200.dp),
@@ -171,7 +230,7 @@ Box(
                 onClick = {}
             ) {
                 Text(
-                    text="Adicionar",
+                    text="Criar",
                     fontSize = 25.sp,
                     color = Color.White,
                     fontFamily = borelFontFamily)

@@ -40,10 +40,11 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
+import androidx.navigation.NavController
 import br.edu.ifto.dposite.R
 
 @Composable
-fun Favoritos(){
+fun Favoritos(navController: NavController){
 
     val lilyScriptOneFontFamily = FontFamily(
         Font(R.font.lilyscriptone) // Referência ao arquivo TTF
@@ -194,7 +195,7 @@ Box(
 
             ) {
                 IconButton(
-                    onClick = { },
+                    onClick = { navController.navigate("Carregamentos")},
                     modifier = Modifier
                         .size(48.dp)
                         .padding(top = 20.dp)

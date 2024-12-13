@@ -40,7 +40,7 @@ import androidx.compose.ui.zIndex
 import androidx.navigation.NavController
 
 @Composable
-fun Armazenamento(navController: NavController) {
+fun Armazenamentovideo(navController: NavController) {
 
     val lilyScriptOneFontFamily = FontFamily(
         Font(R.font.lilyscriptone) // Referência ao arquivo TTF
@@ -102,7 +102,7 @@ fun Armazenamento(navController: NavController) {
 
             ) {
                 IconButton(
-                    onClick = { },
+                    onClick = { navController.navigate("Carregamentos")},
                     modifier = Modifier
                         .size(48.dp)
                         .background(
@@ -138,6 +138,7 @@ fun Armazenamento(navController: NavController) {
                     .background(Color.Green)
                     .padding(5.dp)
                     .clickable {
+                        navController.navigate("Adicionarvideos")
 
                     }
 
@@ -177,7 +178,7 @@ fun Armazenamento(navController: NavController) {
                     // O botão Play no canto inferior direito
                     IconButton(
                         onClick = {
-                            // Adicione aqui a ação que você deseja quando clicar no botão de play
+                            navController.navigate("Reproduzirvideo")
                         },
                         modifier = Modifier
                             .align(Alignment.BottomEnd)

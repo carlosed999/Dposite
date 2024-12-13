@@ -105,7 +105,7 @@ fun Inicio(navController: NavController) {
         //Frases do Inicio
         Column (modifier = Modifier.padding(top = 20.dp)){
             Text(
-                text = "Salve seus videos e imagens favoritas em um só lugar",
+                text = "Salve seus vídeos e imagens favoritas em um só lugar",
                 textAlign = TextAlign.Center,
                 fontSize = 30.sp,
                 lineHeight = 42.sp,

@@ -19,6 +19,10 @@ import androidx.compose.ui.geometry.Offset
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import br.edu.ifto.dposite.ui.theme.Adicionarfotos
+import br.edu.ifto.dposite.ui.theme.Adicionarvideos
+import br.edu.ifto.dposite.ui.theme.Criaralbum
+import br.edu.ifto.dposite.ui.theme.Favoritos
 
 @Composable
 fun FigmaGradientScreen() {
@@ -49,22 +53,29 @@ class MainActivity : ComponentActivity() {
         setContent {
             DpositeTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                   // val navController = rememberNavController()
+                   val navController = rememberNavController()
 
-                    //NavHost(navController = navController, startDestination = "Inicio") {
-                       //composable("Inicio"){ Inicio(navController = navController)}
-                      //  composable("Login"){ Login(navController = navController) }
-                       // composable("Cadastro"){ Cadastro(navController = navController) }
-                       // composable("Carregamentos"){ Carregamentos(navController = navController) }
-                       // composable("Perfil"){ Perfil(navController = navController) }
+                    NavHost(navController = navController, startDestination = "Inicio") {
+                       composable("Inicio"){ Inicio(navController = navController)}
+                      composable("Login"){ Login(navController = navController) }
+                       composable("Cadastro"){ Cadastro(navController = navController) }
+                       composable("Carregamentos"){ Carregamentos(navController = navController) }
+                       composable("Perfil"){ Perfil(navController = navController) }
+                        composable("Albuns"){ Albuns(navController = navController)}
+                        composable("ArmazenamentoFotos"){ ArmazenamentoFotos(navController = navController)}
+                        composable("Armazenamentovideo"){ Armazenamentovideo(navController = navController)}
+                        composable("Favoritos"){ Favoritos(navController = navController) }
+                        composable("Adicionarvideos"){ Adicionarvideos(navController = navController) }
+                        composable("Adicionarfotos"){ Adicionarfotos(navController = navController) }
+                        composable("Criaralbum"){ Criaralbum(navController = navController) }
+                        composable("Reproduzirimagem"){ Reproduzirimagem(navController = navController) }
+                        composable("Reproduzirvideo"){ Reproduzirvideo(navController = navController) }
 
-                   // }
+
+                   }
 
 
-                    //Carregamentos()
-                    Armazenamento()
-                    //Perfil()
-                   // Inicio()
+
 
                 }
             }
