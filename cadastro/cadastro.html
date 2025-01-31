@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <script>
+        
+        function validar(){
+            
+            var senha = document.getElementById("senha").value;
+            var csenha = document.getElementById("confirmacao_senha").value;
+            
+            if(senha!=csenha){
+                
+                document.getElementById("validacao").innerHTML="Senha não coencidem!";
+                return false;
+              
+            }else{
+                document.getElementById("validacao").innerHTML="";
+                return true;
+        }
+        }
+        
+    </script>
+    
+    <title>Formulário de Cadastro</title>
+    
+</head>
+<body>
+
+    <h2>Formulário de Cadastro</h2>
+    <form action="cadastrar.php" method="POST" onsubmit="return validar();">
+       
+        <label for="email">Email:</label><br />
+        <input type="email" id="email" name="email" required placeholder="Digite seu email">
+        <br />
+
+       
+        <label for="nome">Nome:</label><br />
+        <input type="text" id="nome" name="nome" required placeholder="Digite seu nome">
+        <br />
+
+        
+        <label for="sobrenome">Sobrenome:</label><br />
+        <input type="text" id="sobrenome" name="sobrenome" required placeholder="Digite seu sobrenome">
+        <br />
+
+        
+        <label> Senha:</label><br />
+        <input type="password" id="senha" name="senha" required placeholder="Digite sua senha">
+        <br />
+        
+        <label> Confirmar Senha:</label><br />
+        <input type="password" id="confirmacao_senha" 
+               onblur="validar()" onkeyup="validar()"/>
+        <div id="validacao">
+            
+        </div>
+        
+        <br />
+        
+        <label for="telefone">Telefone:</label><br />
+        <input type="tel" id="telefone" name="telefone" required placeholder="Digite seu telefone">
+
+        <br />
+        <button type="submit">Cadastrar</button>
+    </form>
+
+</body>
+</html>
