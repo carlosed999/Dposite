@@ -1,6 +1,6 @@
 <?php
  
-// recebimento dos dados do cadastro//
+// recebimento dos dados do cadastro, no caso do usuario//
 
 include_once (__DIR__ . "/../../modelo/dao/UsuarioDAO.php");
 include_once (__DIR__ . "/../../modelo/dto/Usuario.php");

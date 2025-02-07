@@ -1,6 +1,6 @@
 create database cadastro;
 use cadastro;
-
+/*// banco de dados para armazenamento das informações/*/
 create table usuarios(
 
 id int primary key auto_increment,

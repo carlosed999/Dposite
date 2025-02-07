@@ -1,6 +1,9 @@
 <?php
 
 //pegar as informação JA MASTIGADAS, para manda para o BANCO DE DADOS//
+/*//O Dao tem a função de capturar e persistir os dados de um objeto(entidade) que representa 
+ * um registro em uma base de dados (uma linha em uma tabela, por exemplo).
+ */
 
 include_once (__DIR__ . "/../dto/Usuario.php");
 
