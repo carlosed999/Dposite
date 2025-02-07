@@ -7,6 +7,8 @@
     
     <script>
         
+        //função para a validação da senha//
+        
         function validar(){
             
             var senha = document.getElementById("senha").value;
@@ -30,8 +32,9 @@
 </head>
 <body>
 
+ 
     <h2>Formulário de Cadastro</h2>
-    <form action="cadastrar.php" method="POST" onsubmit="return validar();">
+    <form action="../../controle/usuario/cadastrar.php" method="POST" onsubmit="return validar();">
        
         <label for="email">Email:</label><br />
         <input type="email" id="email" name="email" required placeholder="Digite seu email">

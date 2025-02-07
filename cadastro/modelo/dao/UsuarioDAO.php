@@ -1,7 +1,8 @@
 <?php
 
+//pegar as informação JA MASTIGADAS, para manda para o BANCO DE DADOS//
 
-include_once ("Usuario.php");
+include_once (__DIR__ . "/../dto/Usuario.php");
 
 class UsuarioDAO  {
     
@@ -10,20 +11,19 @@ class UsuarioDAO  {
         $con = new mysqli("localhost", "root", "", "cadastro", 3306);
         $comando = $con->prepare(
                 
-                "select id, nome from usuarios where "
+                "select * from usuarios where "
                 . "email = ? and  senha = md5(?)"
         );
         
         $comando -> bind_param("ss", $email, $senha);
         $comando -> execute();
-        $comando -> bind_param($id, $sobrenome);
+        $res = $comando->get_result();
         
-        if($comando -> fetch ()){
+        if($linha=$res ->fetch_object ()){
             $u = new Usuario();
-            $u -> setId($id);
-            $u -> setNome($nome);
-            $u -> setSobrenome($sobrenome);
-            $u -> setSenha($senha);
+            $u -> setId($linha->id);
+            $u -> setNome($linha->nome);
+            $u ->setSobrenome($linha->sobrenome);
             
         }else{
             

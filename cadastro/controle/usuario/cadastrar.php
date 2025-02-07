@@ -1,7 +1,9 @@
 <?php
  
-include_once "UsuarioDAO.php";
-include_once "Usuario.php";
+// recebimento dos dados do cadastro//
+
+include_once (__DIR__ . "/../../modelo/dao/UsuarioDAO.php");
+include_once (__DIR__ . "/../../modelo/dto/Usuario.php");
 
     $email = $_POST['email'];
     $nome = $_POST['nome'];

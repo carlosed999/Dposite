@@ -1,5 +1,6 @@
 <?php
-
+//(dto) data tranfer, representar a classe do usuario
+//orientada a objetos//
 
 class Usuario{
     
