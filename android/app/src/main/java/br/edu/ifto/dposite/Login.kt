@@ -55,9 +55,11 @@ import kotlinx.serialization.Serializable
 import io.ktor.client.engine.cio.CIO
 import io.ktor.client.request.forms.submitForm
 
+@Serializable
+data class Usuario (val nome: String, val sobrenome: String, val senha: String, val telefone: String)
 
 @Serializable
-data class Usuario (val email: String, val senha: String)
+data class Resposta (val email: String, val senha: String)
 
 
 @OptIn(ExperimentalMaterial3Api::class)
