@@ -49,6 +49,8 @@ android {
     }
 }
 
+val ktor_version: String by project
+
 dependencies {
 
     implementation(libs.androidx.core.ktx)
@@ -68,6 +70,12 @@ dependencies {
     debugImplementation(libs.androidx.ui.test.manifest)
     implementation ("androidx.compose.material:material-icons-extended:1.7.5")
     val nav_version = "2.8.4"
+
+
+    implementation("io.ktor:ktor-client-core:$ktor_version")
+    implementation("io.ktor:ktor-client-cio:$ktor_version")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
+
 
     implementation("androidx.navigation:navigation-compose:$nav_version")
 }

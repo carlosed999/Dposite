@@ -46,11 +46,29 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import io.ktor.client.HttpClient
+import io.ktor.client.statement.HttpResponse
+import io.ktor.client.statement.readText
+import io.ktor.http.Parameters
+import kotlinx.coroutines.runBlocking
+import kotlinx.serialization.Serializable
+import io.ktor.client.engine.cio.CIO
+import io.ktor.client.request.forms.submitForm
+
+
+@Serializable
+data class Usuario (val email: String, val senha: String)
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Login(navController: NavController) {
+
+    var email by remember { mutableStateOf("") }
+    var senha by remember { mutableStateOf("") }
+    var resposta by remember { mutableStateOf(Resposta(null, "") ) }
+
+
     val lilyScriptOneFontFamily = FontFamily(
         Font(R.font.lilyscriptone) // Referência ao arquivo TTF
     )
@@ -190,7 +208,36 @@ fun Login(navController: NavController) {
             )
 
             Button(
-                onClick = { navController.navigate("Carregamentos") },
+
+
+                onClick = {
+
+                    navController.navigate("Carregamentos")
+
+                    val client = HttpClient(CIO)
+
+                    runBlocking {
+                        val json : HttpResponse = client.submitForm(
+                            url = "http://10.3.0.254/dposite/cadastro/controle/usuario/login_json.php",
+                            formParameters = Parameters.build {
+                                append("email", email)
+                                append("senha", senha)
+                            }
+                        )
+
+                        var resp = json.readText()
+                        resposta = Json.decodeFromString<Resposta>(resp)
+
+                        navController.navigate("Carregamentos")
+                    }
+
+
+
+
+
+
+
+                          },
                 colors = ButtonDefaults.buttonColors(
 
                     containerColor = Color.Gray

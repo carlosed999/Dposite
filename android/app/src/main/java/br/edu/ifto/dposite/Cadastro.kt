@@ -45,10 +45,13 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.navigation.NavController
 import br.edu.ifto.dposite.ui.theme.DpositeTheme
+import kotlinx.serialization.Serializable
 
 val borelFontFamily = FontFamily(
     Font(R.font.borel) // Aponte para o arquivo TTF
 )
+
+
 
 
 @OptIn(ExperimentalMaterial3Api::class)
