@@ -54,12 +54,13 @@ import kotlinx.coroutines.runBlocking
 import kotlinx.serialization.Serializable
 import io.ktor.client.engine.cio.CIO
 import io.ktor.client.request.forms.submitForm
+import kotlinx.serialization.json.Json
 
 @Serializable
-data class Usuario (val nome: String, val sobrenome: String, val senha: String, val telefone: String)
+data class Usuario (val id: Int, val nome: String)
 
 @Serializable
-data class Resposta (val email: String, val senha: String)
+data class Resposta (val usuario: Usuario?, val mensagem: String)
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -220,7 +221,7 @@ fun Login(navController: NavController) {
 
                     runBlocking {
                         val json : HttpResponse = client.submitForm(
-                            url = "http://10.3.0.254/dposite/cadastro/controle/usuario/login_json.php",
+                            url = "http://10.3.0.99/dposite/cadastro/controle/usuario/login_json.php",
                             formParameters = Parameters.build {
                                 append("email", email)
                                 append("senha", senha)
@@ -229,6 +230,7 @@ fun Login(navController: NavController) {
 
                         var resp = json.readText()
                         resposta = Json.decodeFromString<Resposta>(resp)
+
 
                         navController.navigate("Carregamentos")
                     }
@@ -264,6 +266,12 @@ fun Login(navController: NavController) {
                 )
 
             }
+            if(resposta != null && resposta!!.usuario != null){
+                Text(text = resposta!!.usuario!!.nome)
+            }
+            Text(
+                text = resposta.mensagem
+            )
 
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
