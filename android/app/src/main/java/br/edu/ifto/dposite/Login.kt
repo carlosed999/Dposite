@@ -215,7 +215,7 @@ fun Login(navController: NavController) {
 
                 onClick = {
 
-                    navController.navigate("Carregamentos")
+
 
                     val client = HttpClient(CIO)
 
@@ -231,8 +231,9 @@ fun Login(navController: NavController) {
                         var resp = json.readText()
                         resposta = Json.decodeFromString<Resposta>(resp)
 
-
-                        navController.navigate("Carregamentos")
+                        if(resposta.usuario != null) {
+                            navController.navigate("Carregamentos")
+                        }
                     }
 
 
