@@ -216,12 +216,11 @@ fun Login(navController: NavController) {
                 onClick = {
 
 
-
                     val client = HttpClient(CIO)
 
                     runBlocking {
                         val json : HttpResponse = client.submitForm(
-                            url = "http://10.3.0.99/dposite/cadastro/controle/usuario/login_json.php",
+                            url = "http://10.3.2.160/dposite/cadastro/controle/usuario/login_json.php",
                             formParameters = Parameters.build {
                                 append("email", email)
                                 append("senha", senha)
@@ -234,13 +233,8 @@ fun Login(navController: NavController) {
                         if(resposta.usuario != null) {
                             navController.navigate("Carregamentos")
                         }
+                        
                     }
-
-
-
-
-
-
 
                           },
                 colors = ButtonDefaults.buttonColors(

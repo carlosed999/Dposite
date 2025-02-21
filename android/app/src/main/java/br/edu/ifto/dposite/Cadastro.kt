@@ -1,5 +1,6 @@
 package br.edu.ifto.dposite
 
+import android.util.Log
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
@@ -45,18 +46,38 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.navigation.NavController
 import br.edu.ifto.dposite.ui.theme.DpositeTheme
+import io.ktor.client.HttpClient
+import io.ktor.client.engine.cio.CIO
+import io.ktor.client.request.forms.submitForm
+import io.ktor.client.statement.HttpResponse
+import io.ktor.client.statement.readText
+import io.ktor.http.Parameters
+import kotlinx.coroutines.runBlocking
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.Json
 
 val borelFontFamily = FontFamily(
     Font(R.font.borel) // Aponte para o arquivo TTF
 )
+@Serializable
+data class NovoUsuario(val email: String, val nome: String, val sobrenome: String, val telefone: String)
+
+@Serializable
+data class RespCadastro(val mensagem: String, val status: String, val usuario: NovoUsuario?)
 
 
-
+//{"status":"sucesso","mensagem":"Salvo com sucesso!","usuario":{"email":"ds@gmail.com","nome":"","sobrenome":"zn","telefone":"12334"}}
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Cadastro(navController: NavController) {
+
+    var email by remember { mutableStateOf("") }
+    var nome by remember { mutableStateOf("") }
+    var sobrenome by remember { mutableStateOf("") }
+    var senha by remember { mutableStateOf("") }
+    var telefone by remember { mutableStateOf("") }
+    var respp by remember { mutableStateOf(RespCadastro("", "", null) ) }
 
 
     val lilyScriptOneFontFamily = FontFamily(
@@ -290,7 +311,36 @@ fun Cadastro(navController: NavController) {
             Spacer(modifier=Modifier.weight(1f))
 
             Button(
-                onClick = { navController.navigate("Carregamentos")},
+
+
+                onClick = { //navController.navigate("Carregamentos")
+
+
+
+                        val client = HttpClient(CIO)
+
+                        runBlocking {
+                            val json : HttpResponse = client.submitForm(
+                                url = "http://10.3.0.99/dposite/cadastro/controle/usuario/cadastrar_json.php",
+                                formParameters = Parameters.build {
+                                    append("email", email)
+                                    append("senha", senha)
+                                    append("telefone", telefone)
+                                    append("nome", nome)
+                                    append("sobrenome", sobrenome)
+
+                                }
+                            )
+
+                            var resp = json.readText()
+                            Log.d("meu", resp)
+                            respp = Json.decodeFromString<RespCadastro>(resp)
+
+
+
+                        }
+
+                   },
                 colors = ButtonDefaults.buttonColors(
 
                     containerColor = Color.Red
@@ -310,11 +360,15 @@ fun Cadastro(navController: NavController) {
                         fontSize = 18.sp, // Tamanho do texto
                         fontWeight = FontWeight.Bold, // Negrito
                         modifier = Modifier.padding(top=5.dp) // Centraliza o texto
+
+
                     )
 
             }
 
-
+            Text(
+                text = respp.mensagem
+            )
 
 
 
