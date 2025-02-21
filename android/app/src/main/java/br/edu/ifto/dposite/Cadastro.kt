@@ -119,6 +119,14 @@ fun Cadastro(navController: NavController) {
 
             var email by remember { mutableStateOf("") }
 
+            Text(
+                text = respp.mensagem,
+                textAlign = TextAlign.Center,
+                modifier = Modifier
+                    .fillMaxWidth(),
+                color = Color.White
+            )
+
 
             Box(
                 modifier = Modifier.fillMaxWidth()
@@ -366,9 +374,7 @@ fun Cadastro(navController: NavController) {
 
             }
 
-            Text(
-                text = respp.mensagem
-            )
+
 
 
 

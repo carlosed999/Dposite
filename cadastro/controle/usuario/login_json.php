@@ -1,5 +1,4 @@
 <?php
-
 header("Content-type: text/json");
 
 include_once (__DIR__ . "/../../modelo/dao/UsuarioDAO.php");
@@ -28,6 +27,3 @@ if ($u != null) {
      echo json_encode($resposta);
 }
 ?>
-
-
-

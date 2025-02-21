@@ -1,5 +1,6 @@
 package br.edu.ifto.dposite
 
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
@@ -123,6 +124,14 @@ fun Login(navController: NavController) {
                     .padding(bottom = 10.dp)
             )
 
+            Text(
+                text = resposta.mensagem,
+                textAlign = TextAlign.Center,
+                modifier = Modifier
+                    .fillMaxWidth(),
+                color = Color.White
+            )
+
             var email by remember { mutableStateOf("") }
 
 
@@ -220,7 +229,7 @@ fun Login(navController: NavController) {
 
                     runBlocking {
                         val json : HttpResponse = client.submitForm(
-                            url = "http://10.3.2.160/dposite/cadastro/controle/usuario/login_json.php",
+                            url = "http://10.3.0.99/dposite/cadastro/controle/usuario/login_json.php",
                             formParameters = Parameters.build {
                                 append("email", email)
                                 append("senha", senha)
@@ -228,6 +237,7 @@ fun Login(navController: NavController) {
                         )
 
                         var resp = json.readText()
+                        Log.d("meu", resp)
                         resposta = Json.decodeFromString<Resposta>(resp)
 
                         if(resposta.usuario != null) {
@@ -260,13 +270,12 @@ fun Login(navController: NavController) {
 
                 )
 
+
+
             }
             if(resposta != null && resposta!!.usuario != null){
                 Text(text = resposta!!.usuario!!.nome)
             }
-            Text(
-                text = resposta.mensagem
-            )
 
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
