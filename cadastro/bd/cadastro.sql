@@ -12,5 +12,5 @@ senha varchar(50) not null,
 data_cadastro timestamp default current_timestamp
 );
 
-insert into usuarios(email, senha, nome, sobrenome)
+insert into usuarios(email, senha, nome, sobrenome, telefone)
 values('carl@gmail.com', md5('carlos'), 'Carlos', 'Eduardo', '(63)99200-0000');
